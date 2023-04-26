@@ -554,7 +554,7 @@ func TestCloudHypervisorStartSandbox(t *testing.T) {
 	_, err = clh.GetThreadIDs(context.Background())
 	assert.NoError(err)
 
-	_ = clh.getClhStopSandboxTimeout
+	assert.True(clh.getClhStopSandboxTimeout().Nanoseconds() != 0)
 
 	pid := clh.GetPids()
 	assert.True(pid[0] != 0)
